@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <!--
+      Copyright (C) 2016 Igalia S.L.
+
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 2 of the License, or
+      (at your option) any later version.
+
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    -->
+  <head>
+    <title>System Info</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+      body {
+        font-family: monospace;
+        font-size: 20pt;
+      }
+    </style>
+    <script type="text/javascript">
+      function setText(aSpanId, aText) {
+        document.getElementById(aSpanId).innerText = aText;
+      }
+      var startDate = 0;
+      var libraryExpiration = 3 * 60 * 60 * 1000; // 3 hours
+      function updateCountDown() {
+        var ms = libraryExpiration - (Date.now() - startDate);
+        if (ms < 0)
+          ms = 0;
+        setText("countDown", new Date(ms).toISOString().slice(11, -5));
+      }
+      function start() {
+        var query = {};
+        var a = location.search.substr(1).split('&');
+        for (var i = 0; i < a.length; i++) {
+          var b = a[i].split('=');
+          query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+        }
+        if (query.ip)  
+          setText("ip", query.ip);
+        if (query.bootTime) {
+          startDate = Date.now() - query.bootTime * 1000;
+          updateCountDown();
+          setInterval(updateCountDown, 250);
+        }                  
+      }
+    </script>
+  </head>
+  <body onload="start()">
+    <p>Local IP Address: <span id="ip">?</span></p>
+    <p>Renesas Graphics Driver Countdown: <span id="countDown">?</span></p>
+  </body>
+</html>

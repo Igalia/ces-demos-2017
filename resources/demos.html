@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <!--
+      Copyright (C) 2016 Igalia S.L.
+
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 2 of the License, or
+      (at your option) any later version.
+
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    -->
+  <head>
+    <title>Chromium/Ozone/Wayland demos</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+      body {
+        margin: 0;
+      }
+      iframe {
+        display: block;
+        border: none;
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
+    <script type="text/javascript">
+      var urls = [
+        "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=10",
+        "https://threejs.org/examples/webgl_animation_cloth.html",
+        "https://threejs.org/examples/webgl_animation_skinning_morph.html",
+        "https://threejs.org/examples/webgl_buffergeometry_instancing_billboards.html",
+        "https://threejs.org/examples/webgl_camera.html",
+        "https://threejs.org/examples/webgl_effects_anaglyph.html",
+        "https://threejs.org/examples/webgl_effects_parallaxbarrier.html",
+        "https://threejs.org/examples/webgl_effects_stereo.html",
+        "https://threejs.org/examples/webgl_geometries.html",
+        "https://threejs.org/examples/webgl_geometries2.html",
+        "https://threejs.org/examples/webgl_geometry_colors_blender.html",
+        "https://threejs.org/examples/webgl_geometry_colors_blender.html",
+        "https://threejs.org/examples/webgl_geometry_convex.html",
+        "https://threejs.org/examples/webgl_geometry_cube.html",
+        "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=70",
+        "https://threejs.org/examples/webgl_geometry_hierarchy.html",
+        "https://threejs.org/examples/webgl_geometry_hierarchy2.html",
+        "https://threejs.org/examples/webgl_gpgpu_birds.html",
+        "https://threejs.org/examples/webgl_gpgpu_protoplanet.html",
+        "https://threejs.org/examples/webgl_gpgpu_water.html",
+        "https://threejs.org/examples/webgl_helpers.html",
+        "https://threejs.org/examples/webgl_interactive_buffergeometry.html",
+        "https://threejs.org/examples/webgl_interactive_lines.html",
+        "https://threejs.org/examples/webgl_interactive_points.html",
+        "https://threejs.org/examples/webgl_interactive_raycasting_points.html",
+        "https://threejs.org/examples/webgl_kinect.html",
+        "https://threejs.org/examples/webgl_lights_pointlights2.html",
+        "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=130",
+        "https://threejs.org/examples/webgl_lines_colors.html",
+        "https://threejs.org/examples/webgl_lines_cubes.html",
+        "https://threejs.org/examples/webgl_lines_sphere.html",
+        "https://threejs.org/examples/webgl_lines_splines.html",
+        "https://threejs.org/examples/webgl_loader_assimp2json.html",
+        "https://threejs.org/examples/webgl_loader_awd.html",
+        "https://threejs.org/examples/webgl_loader_bvh.html",
+        "https://threejs.org/examples/webgl_loader_collada_keyframe.html",
+        "https://threejs.org/examples/webgl_loader_collada_kinematics.html",
+        "https://threejs.org/examples/webgl_loader_collada_skinning.html",
+        "https://threejs.org/examples/webgl_loader_fbx.html",
+        "https://threejs.org/examples/webgl_loader_pdb.html",
+        "https://threejs.org/examples/webgl_loader_ply.html",
+        "https://www.youtube.com/embed/WTddt5ZjKRE?rel=0&controls=0&showinfo=0&autoplay=1&start=10",
+        "https://threejs.org/examples/webgl_loader_sea3d.html",
+        "https://threejs.org/examples/webgl_marchingcubes.html",
+        "https://threejs.org/examples/webgl_materials.html",
+        "https://threejs.org/examples/webgl_materials_grass.html",
+        "https://threejs.org/examples/webgl_materials_reflectivity.html",
+        "https://threejs.org/examples/webgl_materials_shaders_fresnel.html",
+        "https://threejs.org/examples/webgl_materials_wireframe.html",
+        "https://threejs.org/examples/webgl_mirror.html",
+        "https://threejs.org/examples/webgl_mirror_nodes.html",
+        "https://threejs.org/examples/webgl_modifier_simplifier.html",
+        "https://threejs.org/examples/webgl_morphnormals.html",
+        "https://threejs.org/examples/webgl_morphtargets_horse.html",
+        "https://threejs.org/examples/webgl_multiple_elements.html",
+        "https://www.youtube.com/embed/WTddt5ZjKRE?rel=0&controls=0&showinfo=0&autoplay=1&start=70",
+        "https://threejs.org/examples/webgl_multiple_renderers.html",
+        "https://threejs.org/examples/webgl_octree.html",
+        "https://threejs.org/examples/webgl_panorama_equirectangular.html",
+        "https://threejs.org/examples/webgl_points_random.html",
+        "https://threejs.org/examples/webgl_points_sprites.html",
+        "https://threejs.org/examples/webgl_postprocessing.html",
+        "https://threejs.org/examples/webgl_postprocessing_crossfade.html",
+        "https://threejs.org/examples/webgl_postprocessing_masking.html",
+        "https://threejs.org/examples/webgl_postprocessing_nodes.html",
+        "https://threejs.org/examples/webgl_shader.html",
+        "https://threejs.org/examples/webgl_shader_lava.html",
+        "https://threejs.org/examples/webgl_shadowmesh.html",
+        "https://threejs.org/examples/webgl_sprites.html",
+        "https://threejs.org/examples/webgl_terrain_dynamic.html",
+      ];
+      var duration = 60;
+      var index = Math.floor(Math.random() * urls.length);
+      var increment = +1;
+
+      var timeoutID;
+      function nextDemo() {
+        window.clearTimeout(timeoutID);
+        index = (index + urls.length + increment) % urls.length;
+        document.getElementById("iframe").src = urls[index];
+        timeoutID = window.setTimeout(nextDemo, 1000 * duration);
+      }
+
+      window.addEventListener("load", function() {
+        document.getElementById("nextArrow").addEventListener("click", function() { increment = +1; nextDemo(); });
+        document.getElementById("previousArrow").addEventListener("click", function() { increment = -1; nextDemo(); });
+        nextDemo();
+      });
+    </script>
+  </head>
+  <body>
+    <iframe id="iframe"></iframe>
+    <!-- Quick hack to provide forward/backward buttons... -->
+    <div id="previousArrow" style="position: absolute; left: 5px; top: 25vh; height: 50px; width: 30px; opacity: .5"><svg width="50px" height="50px"><path d="M 30 0 L 0 25 L 30 50 z" fill="blue"></svg></div>
+    <div id="nextArrow" style="position: absolute; left: 5px; top: 75vh; height: 50px; width: 30px; opacity: .5"><svg width="50px" height="50px"><path d="M 0 0 L 30 25 L 0 50 z" fill="blue"></svg></div>
+  </body>
+</html>
