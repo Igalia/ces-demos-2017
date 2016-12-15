@@ -17,9 +17,8 @@
 
 RESOURCES=$1
 
-CONTENT_SHELL="/usr/bin/chromium/content_shell"
-HW_CONTENT_SHELL="$CONTENT_SHELL --no-sandbox --in-process-gpu"
-SW_CONTENT_SHELL="$CONTENT_SHELL --no-sandbox"
+SW_CONTENT_SHELL="/usr/bin/chromium/content_shell"
+HW_CONTENT_SHELL="$SW_CONTENT_SHELL --in-process-gpu"
 
 LIST_OF_TESTS=$RESOURCES/sw-vs-hw-tests.txt
 TEST_DURATION=10

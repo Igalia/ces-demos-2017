@@ -37,6 +37,8 @@ if [ -f "$OUT" ]; then
 fi
 
 BASH=/bin/bash
+CHROME_MASH="/usr/bin/google-chrome --mash"
+
 DEFAULT_URL=https://igalia.com/
 ICONS=$SRC/gnome-colors-common
 RESOURCES=$SRC/resources
@@ -72,7 +74,7 @@ path=$BASH $BIN/system-info.sh $RESOURCES
 # Chromium/Ozone/Wayland/Mash
 [launcher]
 icon=$ICONS/applications-internet.png
-path=$BASH $BIN/chromium.sh $DEFAULT_URL
+path=$CHROME_MASH $DEFAULT_URL
 
 # Software VS Hardware rendering demo
 [launcher]
@@ -82,7 +84,7 @@ path=$BASH $BIN/sw-vs-hw-chrome.sh $RESOURCES
 # Chromium demos
 [launcher]
 icon=$ICONS/meld.png
-path=$BASH $BIN/chromium.sh file://$RESOURCES/demos.html
+path=$CHROME_MASH file://$RESOURCES/demos.html
 
 # Weston Terminal
 [launcher]

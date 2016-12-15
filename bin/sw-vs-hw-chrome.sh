@@ -17,8 +17,8 @@
 
 RESOURCES=$1
 
-CHROME="/usr/bin/chromium/chrome --no-sandbox --user-data-dir=/tmp/user-data-dir"
-CHROME_MASH="/usr/bin/chromium/chrome --mash --user-data-dir=/tmp/user-data-dir --no-sandbox"
+CHROME="google-chrome"
+CHROME_MASH="$CHROME --mash"
 WESTON_IMAGE="/usr/bin/weston-image"
 
 LIST_OF_TESTS=$RESOURCES/sw-vs-hw-tests.txt
@@ -51,20 +51,18 @@ URL="$BROWSERBENCH_URL&suite-name=$SUITENAME&test-name=$TESTNAME"
 $WESTON_IMAGE $RESOURCES/software-rendering.png &
 WESTON_IMAGE_PID=$!
 $CHROME $URL &
-CHROME_PID=$!
 sleep $SLEEP_DURATION
 sleep $RESULT_DURATION
-kill $CHROME_PID
+pkill chrome # killing by pid does not seem enough
 sleep $SHUTDOWN_DURATION
 kill $WESTON_IMAGE_PID
 
 $WESTON_IMAGE $RESOURCES/accelerated-rendering.png &
 WESTON_IMAGE_PID=$!
 $CHROME_MASH $URL &
-CHROME_PID=$!
 sleep $SLEEP_DURATION
 sleep $RESULT_DURATION
-pkill chrome # killing $CHROME_PID is not enough
+pkill chrome # killing by pid does not seem enough
 sleep $SHUTDOWN_DURATION
 kill $WESTON_IMAGE_PID
 
