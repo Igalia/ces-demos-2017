@@ -86,6 +86,11 @@ path=$BASH $BIN/sw-vs-hw-chrome.sh $RESOURCES
 icon=$ICONS/meld.png
 path=$CHROME_MASH file://$RESOURCES/demos.html
 
+# Chromium demos (local demos only)
+[launcher]
+icon=$ICONS/meld-gray.png
+path=$CHROME_MASH file://$RESOURCES/demos.html?local=true
+
 # Weston Terminal
 [launcher]
 icon=$ICONS/utilities-terminal.png

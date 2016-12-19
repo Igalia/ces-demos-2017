@@ -31,77 +31,78 @@
       }
     </style>
     <script type="text/javascript">
+      var local = false;
       var urls = [
-        "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=10",
-        "https://threejs.org/examples/webgl_animation_cloth.html",
-        "https://threejs.org/examples/webgl_animation_skinning_morph.html",
-        "https://threejs.org/examples/webgl_buffergeometry_instancing_billboards.html",
-        "https://threejs.org/examples/webgl_camera.html",
-        "https://threejs.org/examples/webgl_effects_anaglyph.html",
-        "https://threejs.org/examples/webgl_effects_parallaxbarrier.html",
-        "https://threejs.org/examples/webgl_effects_stereo.html",
-        "https://threejs.org/examples/webgl_geometries.html",
-        "https://threejs.org/examples/webgl_geometries2.html",
-        "https://threejs.org/examples/webgl_geometry_colors_blender.html",
-        "https://threejs.org/examples/webgl_geometry_colors_blender.html",
-        "https://threejs.org/examples/webgl_geometry_convex.html",
-        "https://threejs.org/examples/webgl_geometry_cube.html",
-        "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=70",
-        "https://threejs.org/examples/webgl_geometry_hierarchy.html",
-        "https://threejs.org/examples/webgl_geometry_hierarchy2.html",
-        "https://threejs.org/examples/webgl_gpgpu_birds.html",
-        "https://threejs.org/examples/webgl_gpgpu_protoplanet.html",
-        "https://threejs.org/examples/webgl_gpgpu_water.html",
-        "https://threejs.org/examples/webgl_helpers.html",
-        "https://threejs.org/examples/webgl_interactive_buffergeometry.html",
-        "https://threejs.org/examples/webgl_interactive_lines.html",
-        "https://threejs.org/examples/webgl_interactive_points.html",
-        "https://threejs.org/examples/webgl_interactive_raycasting_points.html",
-        "https://threejs.org/examples/webgl_kinect.html",
-        "https://threejs.org/examples/webgl_lights_pointlights2.html",
-        "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=130",
-        "https://threejs.org/examples/webgl_lines_colors.html",
-        "https://threejs.org/examples/webgl_lines_cubes.html",
-        "https://threejs.org/examples/webgl_lines_sphere.html",
-        "https://threejs.org/examples/webgl_lines_splines.html",
-        "https://threejs.org/examples/webgl_loader_assimp2json.html",
-        "https://threejs.org/examples/webgl_loader_awd.html",
-        "https://threejs.org/examples/webgl_loader_bvh.html",
-        "https://threejs.org/examples/webgl_loader_collada_keyframe.html",
-        "https://threejs.org/examples/webgl_loader_collada_kinematics.html",
-        "https://threejs.org/examples/webgl_loader_collada_skinning.html",
-        "https://threejs.org/examples/webgl_loader_fbx.html",
-        "https://threejs.org/examples/webgl_loader_pdb.html",
-        "https://threejs.org/examples/webgl_loader_ply.html",
-        "https://www.youtube.com/embed/WTddt5ZjKRE?rel=0&controls=0&showinfo=0&autoplay=1&start=10",
-        "https://threejs.org/examples/webgl_loader_sea3d.html",
-        "https://threejs.org/examples/webgl_marchingcubes.html",
-        "https://threejs.org/examples/webgl_materials.html",
-        "https://threejs.org/examples/webgl_materials_grass.html",
-        "https://threejs.org/examples/webgl_materials_reflectivity.html",
-        "https://threejs.org/examples/webgl_materials_shaders_fresnel.html",
-        "https://threejs.org/examples/webgl_materials_wireframe.html",
-        "https://threejs.org/examples/webgl_mirror.html",
-        "https://threejs.org/examples/webgl_mirror_nodes.html",
-        "https://threejs.org/examples/webgl_modifier_simplifier.html",
-        "https://threejs.org/examples/webgl_morphnormals.html",
-        "https://threejs.org/examples/webgl_morphtargets_horse.html",
-        "https://threejs.org/examples/webgl_multiple_elements.html",
-        "https://www.youtube.com/embed/WTddt5ZjKRE?rel=0&controls=0&showinfo=0&autoplay=1&start=70",
-        "https://threejs.org/examples/webgl_multiple_renderers.html",
-        "https://threejs.org/examples/webgl_octree.html",
-        "https://threejs.org/examples/webgl_panorama_equirectangular.html",
-        "https://threejs.org/examples/webgl_points_random.html",
-        "https://threejs.org/examples/webgl_points_sprites.html",
-        "https://threejs.org/examples/webgl_postprocessing.html",
-        "https://threejs.org/examples/webgl_postprocessing_crossfade.html",
-        "https://threejs.org/examples/webgl_postprocessing_masking.html",
-        "https://threejs.org/examples/webgl_postprocessing_nodes.html",
-        "https://threejs.org/examples/webgl_shader.html",
-        "https://threejs.org/examples/webgl_shader_lava.html",
-        "https://threejs.org/examples/webgl_shadowmesh.html",
-        "https://threejs.org/examples/webgl_sprites.html",
-        "https://threejs.org/examples/webgl_terrain_dynamic.html",
+        { url: "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=10", local: false },
+        { url: "https://threejs.org/examples/webgl_animation_cloth.html", local: false },
+        { url: "https://threejs.org/examples/webgl_animation_skinning_morph.html", local: false },
+        { url: "https://threejs.org/examples/webgl_buffergeometry_instancing_billboards.html", local: false },
+        { url: "https://threejs.org/examples/webgl_camera.html", local: true },
+        { url: "https://threejs.org/examples/webgl_effects_anaglyph.html", local: false },
+        { url: "https://threejs.org/examples/webgl_effects_parallaxbarrier.html", local: false },
+        { url: "https://threejs.org/examples/webgl_effects_stereo.html", local: false },
+        { url: "https://threejs.org/examples/webgl_geometries.html", local: false },
+        { url: "https://threejs.org/examples/webgl_geometries2.html", local: false },
+        { url: "https://threejs.org/examples/webgl_geometry_colors_blender.html", local: false },
+        { url: "https://threejs.org/examples/webgl_geometry_colors_blender.html", local: false },
+        { url: "https://threejs.org/examples/webgl_geometry_convex.html", local: false },
+        { url: "https://threejs.org/examples/webgl_geometry_cube.html", local: false },
+        { url: "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=70", local: false },
+        { url: "https://threejs.org/examples/webgl_geometry_hierarchy.html", local: true },
+        { url: "https://threejs.org/examples/webgl_geometry_hierarchy2.html", local: true },
+        { url: "https://threejs.org/examples/webgl_gpgpu_birds.html", local: true },
+        { url: "https://threejs.org/examples/webgl_gpgpu_protoplanet.html", local: true },
+        { url: "https://threejs.org/examples/webgl_gpgpu_water.html", local: true },
+        { url: "https://threejs.org/examples/webgl_helpers.html", local: false },
+        { url: "https://threejs.org/examples/webgl_interactive_buffergeometry.html", local: true },
+        { url: "https://threejs.org/examples/webgl_interactive_lines.html", local: true },
+        { url: "https://threejs.org/examples/webgl_interactive_points.html", local: false },
+        { url: "https://threejs.org/examples/webgl_interactive_raycasting_points.html", local: true },
+        { url: "https://threejs.org/examples/webgl_kinect.html", local: false },
+        { url: "https://threejs.org/examples/webgl_lights_pointlights2.html", local: false },
+        { url: "https://www.youtube.com/embed/yRvwBmpAPpI?rel=0&controls=0&showinfo=0&autoplay=1&start=130", local: false },
+        { url: "https://threejs.org/examples/webgl_lines_colors.html", local: true },
+        { url: "https://threejs.org/examples/webgl_lines_cubes.html", local: true },
+        { url: "https://threejs.org/examples/webgl_lines_sphere.html", local: true },
+        { url: "https://threejs.org/examples/webgl_lines_splines.html", local: true },
+        { url: "https://threejs.org/examples/webgl_loader_assimp2json.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_awd.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_bvh.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_collada_keyframe.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_collada_kinematics.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_collada_skinning.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_fbx.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_pdb.html", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_ply.html", local: false },
+        { url: "https://www.youtube.com/embed/WTddt5ZjKRE?rel=0&controls=0&showinfo=0&autoplay=1&start=10", local: false },
+        { url: "https://threejs.org/examples/webgl_loader_sea3d.html", local: false },
+        { url: "https://threejs.org/examples/webgl_marchingcubes.html", local: false },
+        { url: "https://threejs.org/examples/webgl_materials.html", local: true },
+        { url: "https://threejs.org/examples/webgl_materials_grass.html", local: true },
+        { url: "https://threejs.org/examples/webgl_materials_reflectivity.html", local: false },
+        { url: "https://threejs.org/examples/webgl_materials_shaders_fresnel.html", local: false },
+        { url: "https://threejs.org/examples/webgl_materials_wireframe.html", local: true },
+        { url: "https://threejs.org/examples/webgl_mirror.html", local: true },
+        { url: "https://threejs.org/examples/webgl_mirror_nodes.html", local: false },
+        { url: "https://threejs.org/examples/webgl_modifier_simplifier.html", local: false },
+        { url: "https://threejs.org/examples/webgl_morphnormals.html", local: false },
+        { url: "https://threejs.org/examples/webgl_morphtargets_horse.html", local: false },
+        { url: "https://threejs.org/examples/webgl_multiple_elements.html", local: true },
+        { url: "https://www.youtube.com/embed/WTddt5ZjKRE?rel=0&controls=0&showinfo=0&autoplay=1&start=70", local: false },
+        { url: "https://threejs.org/examples/webgl_multiple_renderers.html", local: true },
+        { url: "https://threejs.org/examples/webgl_octree.html", local: true },
+        { url: "https://threejs.org/examples/webgl_panorama_equirectangular.html", local: false },
+        { url: "https://threejs.org/examples/webgl_points_random.html", local: true },
+        { url: "https://threejs.org/examples/webgl_points_sprites.html", local: false },
+        { url: "https://threejs.org/examples/webgl_postprocessing.html", local: true },
+        { url: "https://threejs.org/examples/webgl_postprocessing_crossfade.html", local: true },
+        { url: "https://threejs.org/examples/webgl_postprocessing_masking.html", local: false },
+        { url: "https://threejs.org/examples/webgl_postprocessing_nodes.html", local: false },
+        { url: "https://threejs.org/examples/webgl_shader.html", local: true },
+        { url: "https://threejs.org/examples/webgl_shader_lava.html", local: false },
+        { url: "https://threejs.org/examples/webgl_shadowmesh.html", local: true },
+        { url: "https://threejs.org/examples/webgl_sprites.html", local: false },
+        { url: "https://threejs.org/examples/webgl_terrain_dynamic.html", local: false },
       ];
       var duration = 60;
       var index = Math.floor(Math.random() * urls.length);
@@ -111,11 +112,29 @@
       function nextDemo() {
         window.clearTimeout(timeoutID);
         index = (index + urls.length + increment) % urls.length;
-        document.getElementById("iframe").src = urls[index];
+        var url = urls[index].url;
+        if (local) {
+          // We only use local threejs fallback and skip youtube videos.
+          if (urls[index].local) {
+            url = url.replace("https://threejs.org/", "./three.js/");
+          } else {
+            nextDemo();
+            return;
+          }
+        }
+        document.getElementById("iframe").src = url;
         timeoutID = window.setTimeout(nextDemo, 1000 * duration);
       }
 
       window.addEventListener("load", function() {
+        var query = {};
+        var a = location.search.substr(1).split('&');
+        for (var i = 0; i < a.length; i++) {
+          var b = a[i].split('=');
+          query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+        }
+        local = query.local;
+
         document.getElementById("nextArrow").addEventListener("click", function() { increment = +1; nextDemo(); });
         document.getElementById("previousArrow").addEventListener("click", function() { increment = -1; nextDemo(); });
         nextDemo();
