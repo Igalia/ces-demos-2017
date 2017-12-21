@@ -18,7 +18,7 @@
 SCRIPT=`readlink -f "$0"`
 SRC=`dirname "$SCRIPT"`
 
-BACKGROUND_IMAGE=$1
+BACKGROUND_IMAGE=$SRC/wallpaper.png
 if [ -f "$BACKGROUND_IMAGE" ]; then
     BACKGROUND_IMAGE="background-image=$BACKGROUND_IMAGE"
 else
@@ -27,7 +27,7 @@ else
 # background-image=/path/to/your/wallpaper.png"
 fi
 
-OUT="$HOME/.config/weston.ini"
+OUT="$SRC/weston.ini"
 if [ -f "$OUT" ]; then
     echo -n "$OUT will be overwritten. Continue [N/y]? "
     read answer
@@ -37,7 +37,7 @@ if [ -f "$OUT" ]; then
 fi
 
 BASH=/bin/bash
-CHROME_MASH="/usr/bin/google-chrome --mash"
+CHROME_MASH="/usr/bin/chromium --mus --no-sandbox --ozone-platform=wayland --ignore-gpu-blacklist --start-maximized"
 
 DEFAULT_URL=https://igalia.com/
 ICONS=$SRC/gnome-colors-common
@@ -98,4 +98,6 @@ path=/usr/bin/weston-terminal\
 " > $OUT
 
 echo "$OUT generated!"
-echo "The changes will apply when weston is restarted."
+echo "Copy the $OUT to /etc/xdg/weston/"
+echo "And the changes will apply when weston is restarted."
+echo "To restart weston, type systemctl restart weston.service"
