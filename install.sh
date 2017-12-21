@@ -37,7 +37,7 @@ if [ -f "$OUT" ]; then
 fi
 
 BASH=/bin/bash
-CHROME_MASH="/usr/bin/chromium --mus --no-sandbox --ozone-platform=wayland --ignore-gpu-blacklist --start-maximized"
+CHROME_MUS="/usr/bin/chromium --mus --no-sandbox --ozone-platform=wayland --ignore-gpu-blacklist --start-maximized --disable-infobars"
 
 DEFAULT_URL=https://igalia.com/
 ICONS=$SRC/gnome-colors-common
@@ -74,7 +74,7 @@ path=$BASH $BIN/system-info.sh $RESOURCES
 # Chromium/Ozone/Wayland/Mash
 [launcher]
 icon=$ICONS/applications-internet.png
-path=$CHROME_MASH $DEFAULT_URL
+path=$CHROME_MUS $DEFAULT_URL
 
 # Software VS Hardware rendering demo
 [launcher]
@@ -84,12 +84,12 @@ path=$BASH $BIN/sw-vs-hw-chrome.sh $RESOURCES
 # Chromium demos
 [launcher]
 icon=$ICONS/meld.png
-path=$CHROME_MASH file://$RESOURCES/demos.html
+path=$CHROME_MUS file://$RESOURCES/demos.html
 
 # Chromium demos (local demos only)
 [launcher]
 icon=$ICONS/meld-gray.png
-path=$CHROME_MASH file://$RESOURCES/demos.html?local=true
+path=$CHROME_MUS file://$RESOURCES/demos.html?local=true
 
 # Weston Terminal
 [launcher]
