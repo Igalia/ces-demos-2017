@@ -20,4 +20,4 @@ RESOURCES=$1
 IP=`ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
 BOOT_TIME=`cut -d: -f1 /proc/uptime | awk '{ print $1}'`
 
-/usr/bin/chromium/content_shell "file://$RESOURCES/system-info.html?ip=$IP&bootTime=$BOOT_TIME" &
+/usr/bin/chromium --mus --no-sandbox --ozone-platform=wayland --ignore-gpu-blacklist --disable-infobars  "file://$RESOURCES/system-info.html?ip=$IP&bootTime=$BOOT_TIME"
