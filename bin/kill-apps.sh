@@ -17,6 +17,6 @@
 
 pkill --oldest --signal TERM -f chromium
 pkill --oldest --signal TERM -f content_shell
-pkill --oldest --signal TERM -f weston-image
-pkill --oldest --signal TERM -f weston-terminal
-pkill --oldest --signal TERM -f bash # In last position, so that it does not kill itself.
+pkill --signal TERM -f weston-image
+pkill --signal TERM -f weston-terminal
+pkill --signal TERM -f bash # In last position, so that it does not kill itself.
