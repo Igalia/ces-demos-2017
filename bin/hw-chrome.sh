@@ -18,7 +18,7 @@
 RESOURCES=$1
 
 CHROME="/usr/bin/chromium"
-CHROME_MUS="$CHROME --mus --no-sandbox --ignore-gpu-blacklist --ozone-platform=wayland --start-maximized"
+CHROME_MUS="$CHROME --mus --no-sandbox --ignore-gpu-blacklist --ozone-platform=wayland --start-maximized --disable-infobars"
 WESTON_IMAGE="/usr/bin/weston-image"
 
 LIST_OF_TESTS=$RESOURCES/sw-vs-hw-tests.txt
@@ -48,17 +48,6 @@ TESTNAME="${r[1]}"
 echo "Running $SUITENAME/$TESTNAME..." 1>&2
 URL="$BROWSERBENCH_URL&suite-name=$SUITENAME&test-name=$TESTNAME"
 
-$WESTON_IMAGE $RESOURCES/software-rendering.png &
-WESTON_IMAGE_PID=$!
-$CHROME $URL &
-sleep $SLEEP_DURATION
-sleep $RESULT_DURATION
-pkill chrome # killing by pid does not seem enough
-sleep $SHUTDOWN_DURATION
-kill $WESTON_IMAGE_PID
-
-$WESTON_IMAGE $RESOURCES/accelerated-rendering.png &
-WESTON_IMAGE_PID=$!
 $CHROME_MUS $URL &
 sleep $SLEEP_DURATION
 sleep $RESULT_DURATION

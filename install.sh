@@ -79,7 +79,7 @@ path=$CHROME_MUS $DEFAULT_URL
 # Software VS Hardware rendering demo
 [launcher]
 icon=$ICONS/preferences-desktop-locale.png
-path=$BASH $BIN/sw-vs-hw-chrome.sh $RESOURCES
+path=$BASH $BIN/hw-chrome.sh $RESOURCES
 
 # Chromium demos
 [launcher]
