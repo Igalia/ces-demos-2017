@@ -17,8 +17,8 @@
 
 RESOURCES=$1
 
-CHROME="google-chrome"
-CHROME_MASH="$CHROME --mash"
+CHROME="/usr/bin/chromium"
+CHROME_MUS="$CHROME --mus --no-sandbox --ignore-gpu-blacklist --ozone-platform=wayland --start-maximized"
 WESTON_IMAGE="/usr/bin/weston-image"
 
 LIST_OF_TESTS=$RESOURCES/sw-vs-hw-tests.txt
@@ -59,7 +59,7 @@ kill $WESTON_IMAGE_PID
 
 $WESTON_IMAGE $RESOURCES/accelerated-rendering.png &
 WESTON_IMAGE_PID=$!
-$CHROME_MASH $URL &
+$CHROME_MUS $URL &
 sleep $SLEEP_DURATION
 sleep $RESULT_DURATION
 pkill chrome # killing by pid does not seem enough
