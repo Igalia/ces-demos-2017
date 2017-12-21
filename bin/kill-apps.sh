@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-killall -9 chrome
-killall -9 content_shell
-killall -9 weston-image
-killall -9 weston-terminal
-killall -9 bash # In last position, so that it does not kill itself.
+pkill --oldest --signal TERM -f chromium
+pkill --oldest --signal TERM -f content_shell
+pkill --oldest --signal TERM -f weston-image
+pkill --oldest --signal TERM -f weston-terminal
+pkill --oldest --signal TERM -f bash # In last position, so that it does not kill itself.
