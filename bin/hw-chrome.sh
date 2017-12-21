@@ -51,9 +51,8 @@ URL="$BROWSERBENCH_URL&suite-name=$SUITENAME&test-name=$TESTNAME"
 $CHROME_MUS $URL &
 sleep $SLEEP_DURATION
 sleep $RESULT_DURATION
-pkill chrome # killing by pid does not seem enough
+pkill --oldest --signal TERM -f chromium # killing by pid does not seem enough
 sleep $SHUTDOWN_DURATION
-kill $WESTON_IMAGE_PID
 
 done < "$LIST_OF_TESTS"
 
