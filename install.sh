@@ -76,7 +76,7 @@ path=$BASH $BIN/system-info.sh $RESOURCES
 icon=$ICONS/applications-internet.png
 path=$CHROME_MUS $DEFAULT_URL
 
-# Software VS Hardware rendering demo
+# Rendering demo
 [launcher]
 icon=$ICONS/preferences-desktop-locale.png
 path=$BASH $BIN/hw-chrome.sh $RESOURCES
